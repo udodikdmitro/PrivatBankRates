@@ -1,5 +1,6 @@
 package com.example.resttemplate.controller;
 
+import com.example.resttemplate.objects.PrivatBankRates;
 import com.example.resttemplate.service.PrivatBankService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,8 @@ public class PrivatBankController {
 
     @GetMapping("/get")
     public ResponseEntity<String> getRates(){
-        String rates = privatBankService.getRates();
-        return ResponseEntity.ok(rates);
+        PrivatBankRates rates = privatBankService.getRates();
+        String lastResult = rates.toString();
+        return ResponseEntity.ok(lastResult);
     }
 }

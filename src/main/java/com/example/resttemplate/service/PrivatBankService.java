@@ -1,5 +1,6 @@
 package com.example.resttemplate.service;
 
+import com.example.resttemplate.objects.PrivatBankRates;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -17,10 +18,10 @@ public class PrivatBankService {
         this.restTemplate = restTemplate;
     }
 
-    public String getRates(){
-        ResponseEntity<String> response
-                = restTemplate.getForEntity(PRIVAT_BANK_RATES_ENDPOINT, String.class);
-        String result = response.getBody();
+    public PrivatBankRates getRates(){
+        ResponseEntity<PrivatBankRates> response
+                = restTemplate.getForEntity(PRIVAT_BANK_RATES_ENDPOINT, PrivatBankRates.class);
+        PrivatBankRates result = response.getBody();
         return result;
     }
 }
