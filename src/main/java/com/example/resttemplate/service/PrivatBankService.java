@@ -1,10 +1,16 @@
 package com.example.resttemplate.service;
 
-import com.example.resttemplate.objects.PrivatBankRates;
+import com.example.resttemplate.objects.Rate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
 
 @Service
 public class PrivatBankService {
@@ -18,10 +24,14 @@ public class PrivatBankService {
         this.restTemplate = restTemplate;
     }
 
-    public PrivatBankRates getRates(){
-        ResponseEntity<PrivatBankRates> response
-                = restTemplate.getForEntity(PRIVAT_BANK_RATES_ENDPOINT, PrivatBankRates.class);
-        PrivatBankRates result = response.getBody();
+    public List<Rate> getRates(){
+        ResponseEntity<List<Rate>> response
+                = restTemplate.exchange(PRIVAT_BANK_RATES_ENDPOINT, HttpMethod.GET,
+                new HttpEntity<>(new HttpHeaders()),
+                new ParameterizedTypeReference<List<Rate>>() {});
+        List<Rate> result = response.getBody();
         return result;
     }
+
+    //new ParameterizedTypeReference<List<Rate>>() {}
 }
