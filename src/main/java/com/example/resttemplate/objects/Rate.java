@@ -50,11 +50,8 @@ public class Rate {
 
     @Override
     public String toString() {
-        return "Rate{" +
-                "ccy='" + ccy + '\'' +
-                ", base_ccy='" + base_ccy + '\'' +
-                ", buy='" + buy + '\'' +
-                ", sale='" + sale + '\'' +
-                '}';
+        return ccy + " against " + base_ccy +
+                ":" + '\n' + "buy: " + buy + "," + '\n' +
+                "sale: " + sale;
     }
 }
