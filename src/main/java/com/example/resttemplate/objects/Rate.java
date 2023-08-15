@@ -7,6 +7,8 @@ public class Rate {
     private String buy;
     private String sale;
 
+    public Rate() {}
+
     public Rate(String ccy, String base_ccy, String buy, String sale) {
         this.ccy = ccy;
         this.base_ccy = base_ccy;
@@ -44,5 +46,15 @@ public class Rate {
 
     public void setSale(String sale) {
         this.sale = sale;
+    }
+
+    @Override
+    public String toString() {
+        return "Rate{" +
+                "ccy='" + ccy + '\'' +
+                ", base_ccy='" + base_ccy + '\'' +
+                ", buy='" + buy + '\'' +
+                ", sale='" + sale + '\'' +
+                '}';
     }
 }
